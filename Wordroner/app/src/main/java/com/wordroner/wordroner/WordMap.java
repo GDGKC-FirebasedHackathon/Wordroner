@@ -11,9 +11,12 @@ public class WordMap {
 	private HashMap<String, Integer> wordMap;
 	private static final String useless_list[] = {"a","an","the","which","that"};
 	private static final HashMap<String, Integer> useless_map = new HashMap<String,Integer>();
-	
-	
-	WordMap(String words[]){
+
+
+    public WordMap() {
+    }
+
+    public WordMap(String words[]){
 		wordMap = new HashMap<String, Integer>();
 		
 		for(int i = 0; i<useless_list.length;i++)
