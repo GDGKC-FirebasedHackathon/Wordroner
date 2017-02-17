@@ -1,8 +1,8 @@
 package com.wordroner.wordroner;
 
 import com.wordroner.wordroner.api.DictApi;
-import com.wordroner.wordroner.api.model.WordList;
 
+import org.json.JSONObject;
 import org.junit.Test;
 
 /**
@@ -13,7 +13,14 @@ import org.junit.Test;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
-        WordList words = new DictApi().getWordList("Ace").execute().body();
+        JSONObject words = new DictApi().getWordList("Ace").execute().body();
+
         System.out.println(words.toString());
+
+        //JsonParser parser = new JsonParser();
+        //JSONObject root =  parser.parse(words.toString()).getAsJsonObject();
+
+
+        System.out.println("parsing : ");
     }
 }

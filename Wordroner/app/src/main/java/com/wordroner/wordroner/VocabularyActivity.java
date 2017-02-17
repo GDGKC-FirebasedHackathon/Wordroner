@@ -1,6 +1,5 @@
 package com.wordroner.wordroner;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -15,12 +14,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.ArrayList;
-
-import javax.net.ssl.HttpsURLConnection;
+import java.util.concurrent.ExecutionException;
 
 public class VocabularyActivity extends AppCompatActivity {
 
@@ -69,60 +64,22 @@ public class VocabularyActivity extends AppCompatActivity {
 
         });
 
-        new CallbackTask().execute(dictionaryEntries());
-    }
-
-    private String dictionaryEntries() {
-        final String language = "en";
-        final String word = "Ace";
-        final String word_id = word.toLowerCase(); //word id is case sensitive and lowercase is required
-        return "https://od-api.oxforddictionaries.com:443/api/v1/entries/" + language + "/" + word_id;
-    }
-
-
-    //in android calling network requests on the main thread forbidden by default
-    //create class to do async job
-    private class CallbackTask extends AsyncTask<String, Integer, String> {
-
-        @Override
-        protected String doInBackground(String... params) {
-
-            //TODO: replace with your own app id and app key
-            final String app_id = "32d2d75c";
-            final String app_key = "24f2eb16bf1cf1e81751f567a02dc2c7";
-            try {
-                URL url = new URL(params[0]);
-                HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
-                urlConnection.setRequestProperty("Accept", "application/json");
-                urlConnection.setRequestProperty("app_id", app_id);
-                urlConnection.setRequestProperty("app_key", app_key);
-
-                // read the output from the server
-                BufferedReader reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-                StringBuilder stringBuilder = new StringBuilder();
-
-                String line = null;
-                while ((line = reader.readLine()) != null) {
-                    stringBuilder.append(line + "\n");
-                }
-
-                Log.i("Wordroner", stringBuilder.toString());
-
-                return stringBuilder.toString();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                return e.toString();
-            }
+        Dictionary dic = new Dictionary();
+        try {
+            Log.i("Wordroner",dic.ShowDefinitions("ace"));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
 
-        @Override
-        protected void onPostExecute(String result) {
-            super.onPostExecute(result);
 
-            System.out.println(result);
-        }
     }
+
+
+
+
+
 }
 
 

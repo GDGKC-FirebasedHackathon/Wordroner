@@ -16,6 +16,8 @@ public class MenuActivity extends AppCompatActivity {
         final Button btn_goRecord = (Button) findViewById(R.id.btn_goRecord);
         final Button btn_goVoca = (Button) findViewById(R.id.btn_goVoca);
 
+
+
         //go to record activity
         btn_goRecord.setOnClickListener(new Button.OnClickListener(){
             @Override
