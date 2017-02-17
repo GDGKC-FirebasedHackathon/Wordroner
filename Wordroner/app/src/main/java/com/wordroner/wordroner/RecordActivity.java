@@ -108,7 +108,7 @@ public class RecordActivity extends AppCompatActivity {
                     ArrayList<String> result = data
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     Log.d("어레이리스트확인", "onActivityResult: " + result.getClass());
-                    txtSpeechInput.setText(result.get(0));
+                    txtSpeechInput.setText("1등 : "+result.get(0));
                     initData(result);
                 }
                 break;
