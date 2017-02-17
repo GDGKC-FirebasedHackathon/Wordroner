@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -26,44 +27,48 @@ public class SelectActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_select);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_select);
 
-            final Button btn_goBack = (Button) findViewById(R.id.btn_goBack);
-            final Button btn_saveWord = (Button) findViewById(R.id.btn_saveWord);
+        //인식한 데이터 받는 인텐트
+        Intent intent = getIntent();
+        String[] splitWords = intent.getStringArrayExtra("splitWords");
 
-            btn_saveWord.setOnClickListener(new Button.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
-                    startActivity(intent);
-                }
-            });
-            btn_goBack.setOnClickListener(new Button.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(getApplicationContext(), RecordActivity.class);
-                    startActivity(intent);
-                }
-            });
+        ArrayList<String> words = new ArrayList<String>();
+        int i = 0;
+        for (i = 0; i < splitWords.length; i++) {
+            words.add(splitWords[i]);
+        }
+        Log.d("하이", "onCreate: " + words);
+        final Button btn_goBack = (Button) findViewById(R.id.btn_goBack);
+        final Button btn_saveWord = (Button) findViewById(R.id.btn_saveWord);
 
-            //using listview
+        btn_saveWord.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+                startActivity(intent);
+            }
+        });
+        btn_goBack.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), RecordActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //using listview
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
-
-        ArrayList<String> words = new ArrayList<String>(
-                    Arrays.asList("123", "123", "a", "the", "cat", "cat", "cat", "dog", "apple", "a", "starbucks"));
         WordMap wordmap = new WordMap(words);
 
-        //        ArrayList<Member> list = new ArrayList<Member>();
-
-        List<Map.Entry<String, Integer>> list=wordmap.ExtractWords();
+        List<Map.Entry<String, Integer>> list = wordmap.ExtractWords();
 
         recyclerView.setAdapter(new RecordAdapter(list));
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
 
 
-
-      //  ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,, list);
+        //  ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,, list);
 
         //    listView.setAdapter(adapter);
     /*
@@ -78,19 +83,19 @@ public class SelectActivity extends AppCompatActivity {
     */
 
 
-            String uid = "none";
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            if (user != null) {
-                uid = user.getUid();
-            }
+        String uid = "none";
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            uid = user.getUid();
+        }
 
-            // Write a message to the database
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference myRef = database.getReference(uid);
+        // Write a message to the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference(uid);
 
 
-            myRef.child("object").setValue(wordmap.ExtractWords());
-            //myRef.child("words").child("3").setValue("hello world2");
+        myRef.child("object").setValue(wordmap.ExtractWords());
+        //myRef.child("words").child("3").setValue("hello world2");
 
 
     }

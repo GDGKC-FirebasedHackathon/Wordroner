@@ -30,7 +30,6 @@ public class RecordActivity extends AppCompatActivity {
     private ImageButton btnSpeak;
     private final int REQ_CODE_SPEECH_INPUT = 100;
 
-    private RecyclerView recyclerView;
     private ArrayList<String> speechList = new ArrayList<>();
 
     private ListView listview;
@@ -57,30 +56,27 @@ public class RecordActivity extends AppCompatActivity {
             }
         });
     }
+
     private void initLayout() {
-//        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        listview = (ListView)findViewById(R.id.speechlist);
+        listview = (ListView) findViewById(R.id.speechlist);
     }
+
     private void initData(ArrayList<String> result) {
         speechList = result;
         Log.d("어레이리스트 initData 확인", "initData: " + result);
-//        recyclerView.setAdapter(new MyRecyclerAdapter(getApplicationContext() , speechList, new CustomItemClickListener() {
-//            @Override
-//            public void onItemClick(View v, int position) {
-//                Log.d("어레이리스트 click data", "clicked position:" + position);
-//            }
-//        }));
-//        recyclerView.setAdapter(new MyRecyclerAdapter(speechList));
-//        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,speechList);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, speechList);
         listview.setAdapter(adapter);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.d("리스트뷰", "onItemClick: "+ i +" : "+ speechList.get(i) );
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Intent intent = new Intent(RecordActivity.this, SelectActivity.class);
+                intent.putExtra("splitWords", speechList.get(position).split(" "));
+                startActivity(intent);
             }
         });
     }
+
     /**
      * Showing google speech input dialog
      */
@@ -99,6 +95,7 @@ public class RecordActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         }
     }
+
     /**
      * Receiving speech input
      */
@@ -111,7 +108,6 @@ public class RecordActivity extends AppCompatActivity {
                 if (resultCode == RESULT_OK && null != data) {
                     ArrayList<String> result = data
                             .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-                    Toast.makeText(this, String.valueOf(result.size()) + " : " + result.toString(), Toast.LENGTH_LONG).show();
                     Log.d("어레이리스트확인", "onActivityResult: " + result.getClass());
                     txtSpeechInput.setText(result.get(0));
                     initData(result);
