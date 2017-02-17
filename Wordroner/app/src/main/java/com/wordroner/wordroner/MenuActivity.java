@@ -22,7 +22,7 @@ public class MenuActivity extends AppCompatActivity {
         btn_goRecord.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), RecordActivity.class);
+                Intent intent = new Intent(MenuActivity.this, RecordActivity.class);
                 startActivity(intent);
             }
         });
