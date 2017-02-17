@@ -17,7 +17,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/btn_record" />
+        android:id="@+id/btn_goRecord" />
 
     <Button
         android:text="단어장 보기"
@@ -26,5 +26,5 @@
         android:layout_alignTop="@+id/btn_record"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/btn_voca" />
+        android:id="@+id/btn_goVoca" />
 </RelativeLayout>

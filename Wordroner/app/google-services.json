@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "900526562915",
+    "firebase_url": "https://wordroner-a79f1.firebaseio.com",
+    "project_id": "wordroner-a79f1",
+    "storage_bucket": "wordroner-a79f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:900526562915:android:0eebc777b142a1fd",
+        "android_client_info": {
+          "package_name": "com.wordroner.wordroner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "900526562915-nh7esi2mfp1e683liikipieqn1r7jbg5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wordroner.wordroner",
+            "certificate_hash": "5C638DA25424B7D207ADFE4918E08B55BC60A01D"
+          }
+        },
+        {
+          "client_id": "900526562915-kt8m1p6f5c1dqulld946tl6haqugbp0a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiNsEvQy1LfhkboljHWJ-_I7rxKmibZFc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "900526562915-kt8m1p6f5c1dqulld946tl6haqugbp0a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

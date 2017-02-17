@@ -17,7 +17,8 @@
         </activity>
         <activity android:name=".MenuActivity" />
         <activity android:name=".RecordActivity" />
-        <activity android:name=".VocabularyActivity"></activity>
+        <activity android:name=".VocabularyActivity" />
+        <activity android:name=".SelectActivity"></activity>
     </application>
 
 </manifest>

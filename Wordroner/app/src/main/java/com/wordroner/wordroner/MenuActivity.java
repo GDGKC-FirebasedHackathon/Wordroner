@@ -13,11 +13,11 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        final Button btn_record = (Button) findViewById(R.id.btn_record);
-        final Button btn_voca = (Button) findViewById(R.id.btn_voca);
+        final Button btn_goRecord = (Button) findViewById(R.id.btn_goRecord);
+        final Button btn_goVoca = (Button) findViewById(R.id.btn_goVoca);
 
         //go to record activity
-        btn_record.setOnClickListener(new Button.OnClickListener(){
+        btn_goRecord.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), RecordActivity.class);
@@ -26,7 +26,7 @@ public class MenuActivity extends AppCompatActivity {
         });
 
         //go to vocabulary activity
-        btn_voca.setOnClickListener(new Button.OnClickListener(){
+        btn_goVoca.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), VocabularyActivity.class);
