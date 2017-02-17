@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class WordMap {
 	private HashMap<String, Integer> wordMap;
-	private static final String useless_list[] = {"a","an","the","which","that"};
+	private static final String useless_list[] = {"a","an","the","which","that","what","is","are","am","was","were","be","at","in","on","i","we","you"};
 	private static final HashMap<String, Integer> useless_map = new HashMap<String,Integer>();
 
 

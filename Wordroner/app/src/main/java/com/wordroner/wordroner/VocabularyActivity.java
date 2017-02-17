@@ -91,7 +91,7 @@ public class VocabularyActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 String selected_item = (String)adapterView.getItemAtPosition(position);
 
-                                
+
             }
         });
     }
