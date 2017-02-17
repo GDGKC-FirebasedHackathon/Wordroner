@@ -9,47 +9,54 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/word_icon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        />
+
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"
         android:layout_width="wrap_content"
+        android:layout_marginTop="310dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" />
+       />
 
     <TextView
         android:id="@+id/textViewHello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="220dp"
         android:text="Sign In"
-        android:textSize="20sp"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:layout_above="@+id/sign_in_button"
-        android:layout_marginBottom="40dp"
-        android:layout_centerHorizontal="true" />
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/sign_out_button"
-        android:text="Sign Out"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/sign_in_button"
-        android:layout_alignStart="@+id/sign_in_button"
-        android:layout_alignLeft="@+id/sign_in_button"
-        android:layout_alignRight="@+id/sign_in_button"
-        android:layout_alignEnd="@+id/sign_in_button"
+        android:layout_alignBottom="@id/sign_in_button"
+        android:layout_alignEnd="@id/sign_in_button"
+        android:layout_alignLeft="@id/sign_in_button"
+        android:layout_alignRight="@id/sign_in_button"
+        android:layout_alignStart="@id/sign_in_button"
+        android:text="Sign Out"
         android:visibility="gone" />
 
     <Button
+        android:id="@+id/go_to_button"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:id="@+id/go_to_button"
-        android:text="go to Menu"
-        android:background="@color/white"
-        android:layout_alignStart="@id/sign_in_button"
+        android:layout_alignEnd="@id/sign_in_button"
         android:layout_alignLeft="@id/sign_in_button"
         android:layout_alignRight="@id/sign_in_button"
-        android:layout_alignEnd="@id/sign_in_button"
+        android:layout_alignStart="@id/sign_in_button"
         android:layout_below="@id/sign_in_button"
+        android:background="@color/white"
+        android:text="go to Menu"
         android:visibility="gone" />
 
 </RelativeLayout>
