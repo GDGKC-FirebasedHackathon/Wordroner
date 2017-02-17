@@ -23,8 +23,8 @@
         android:text="단어장 보기"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/btn_record"
+        android:id="@+id/btn_goVoca"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/btn_goVoca" />
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
