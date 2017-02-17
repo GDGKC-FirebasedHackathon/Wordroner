@@ -1,8 +1,6 @@
 package com.wordroner.wordroner;
 
 import android.content.Intent;
-import android.os.AsyncTask;
-
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -69,8 +67,16 @@ public class VocabularyActivity extends AppCompatActivity {
 
         });
 
+        btn_Back.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+                startActivity(intent);
+            }
+        });
 
         Dictionary dic = new Dictionary();
+
         try {
             Log.i("Wordroner",dic.ShowDefinitions("ace"));
         } catch (InterruptedException e) {
@@ -79,6 +85,7 @@ public class VocabularyActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
 }
 
 
