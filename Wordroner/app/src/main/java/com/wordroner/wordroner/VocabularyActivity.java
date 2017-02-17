@@ -1,10 +1,13 @@
 package com.wordroner.wordroner;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,7 +36,7 @@ public class VocabularyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vocabulary);
-
+        final Button btn_Back = (Button) findViewById(R.id.btn_Back);
         listView = (ListView) findViewById(R.id.listView);
 
         String uid = "none";
@@ -70,6 +73,13 @@ public class VocabularyActivity extends AppCompatActivity {
         });
 
         new CallbackTask().execute(dictionaryEntries());
+        btn_Back.setOnClickListener(new Button.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private String dictionaryEntries() {
