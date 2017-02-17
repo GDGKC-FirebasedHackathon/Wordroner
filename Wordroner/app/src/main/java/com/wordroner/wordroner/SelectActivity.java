@@ -48,6 +48,7 @@ public class SelectActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         btn_goBack.setOnClickListener(new Button.OnClickListener() {
@@ -55,6 +56,7 @@ public class SelectActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), RecordActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 

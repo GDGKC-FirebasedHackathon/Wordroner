@@ -39,4 +39,17 @@
         android:layout_alignEnd="@+id/sign_in_button"
         android:visibility="gone" />
 
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/go_to_button"
+        android:text="go to Menu"
+        android:background="@color/white"
+        android:layout_alignStart="@id/sign_in_button"
+        android:layout_alignLeft="@id/sign_in_button"
+        android:layout_alignRight="@id/sign_in_button"
+        android:layout_alignEnd="@id/sign_in_button"
+        android:layout_below="@id/sign_in_button"
+        android:visibility="gone" />
+
 </RelativeLayout>

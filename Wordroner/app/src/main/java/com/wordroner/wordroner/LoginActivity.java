@@ -54,6 +54,7 @@ public class LoginActivity extends AppCompatActivity implements
     private TextView mTextViewHello;
     private SignInButton mSignInButton;
     private Button mSignOutButton;
+    private Button mGoButton;
     private ProgressDialog mProgressDialog;
 
     @Override
@@ -68,6 +69,8 @@ public class LoginActivity extends AppCompatActivity implements
         mSignOutButton = (Button) findViewById(R.id.sign_out_button);
         mSignOutButton.setOnClickListener(this);
 
+        mGoButton =(Button)findViewById(R.id.go_to_button);
+        mGoButton.setOnClickListener(this);
         mTextViewHello = (TextView) findViewById(R.id.textViewHello);
 
         prepareApp();
@@ -114,10 +117,12 @@ public class LoginActivity extends AppCompatActivity implements
             mTextViewHello.setText("Sign In");
             mSignInButton.setVisibility(View.VISIBLE);
             mSignOutButton.setVisibility(View.GONE);
+            mGoButton.setVisibility(View.GONE);
         } else {
             mTextViewHello.setText(user.getEmail());
             mSignInButton.setVisibility(View.INVISIBLE);
             mSignOutButton.setVisibility(View.VISIBLE);
+            mGoButton.setVisibility(View.VISIBLE);
         }
     }
 
@@ -144,6 +149,7 @@ public class LoginActivity extends AppCompatActivity implements
         //go to Menu Activity
         Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
         startActivity(intent);
+        finish();
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
@@ -197,6 +203,9 @@ public class LoginActivity extends AppCompatActivity implements
                 break;
             case R.id.sign_out_button:
                 signOut();
+                break;
+            case R.id.go_to_button:
+                GoToMenu();
                 break;
         }
     }

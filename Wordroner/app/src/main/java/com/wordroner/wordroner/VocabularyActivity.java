@@ -68,34 +68,34 @@ public class VocabularyActivity extends AppCompatActivity {
 
         });
 
-        btn_Back.setOnClickListener(new Button.OnClickListener(){
+        btn_Back.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
         Dictionary dic = new Dictionary();
 
         try {
-            Log.i("Wordroner",dic.ShowDefinitions("ace"));
+            Log.i("Wordroner", dic.ShowDefinitions("ace"));
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                String selected_item = (String)adapterView.getItemAtPosition(position);
+                String selected_item = (String) adapterView.getItemAtPosition(position);
 
 
             }
         });
     }
-
 
 
 }

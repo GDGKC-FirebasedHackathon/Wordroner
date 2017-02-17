@@ -43,6 +43,7 @@ public class RecordActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(RecordActivity.this, SelectActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         btnSpeak = (ImageButton) findViewById(R.id.btnSpeak);
