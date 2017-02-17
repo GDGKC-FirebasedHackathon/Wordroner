@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.wordroner.wordroner.recordManager.CustomItemClickListener;
 import com.wordroner.wordroner.recordManager.MyRecyclerAdapter;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class RecordActivity extends AppCompatActivity {
     private final int REQ_CODE_SPEECH_INPUT = 100;
 
     private RecyclerView recyclerView;
+    private ArrayList<String> speechList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +56,16 @@ public class RecordActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
     }
     private void initData(ArrayList<String> result) {
-        List<String> speechList = result;
+        speechList = result;
         Log.d("어레이리스트 initData 확인", "initData: " + result);
-        recyclerView.setAdapter(new MyRecyclerAdapter(speechList));
+        recyclerView.setAdapter(new MyRecyclerAdapter(getApplicationContext() , speechList, new CustomItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                Log.d("어레이리스트 click data", "clicked position:" + position);
+            }
+        }));
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
+
     }
     /**
      * Showing google speech input dialog

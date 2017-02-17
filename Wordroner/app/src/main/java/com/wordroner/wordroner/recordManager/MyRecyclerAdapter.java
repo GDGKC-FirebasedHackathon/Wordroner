@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
+import android.content.Context;
 import com.wordroner.wordroner.R;
 
 import java.util.List;
@@ -17,16 +17,27 @@ import java.util.List;
 public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.ViewHolder> {
     private List<String> speechList;
 
+    Context mContext;
+    CustomItemClickListener listener;
 
-    public MyRecyclerAdapter(List<String> speechList) {
+
+    public MyRecyclerAdapter(Context mContext, List<String> speechList,CustomItemClickListener listener) {
+        this.mContext = mContext;
         this.speechList = speechList;
-
+        this.listener= listener;
     }
 
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_record, parent, false);
+        final ViewHolder mViewHolder = new ViewHolder(view);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onItemClick(v, mViewHolder.getPosition());
+            }
+        });
         return new ViewHolder(view);
     }
 
