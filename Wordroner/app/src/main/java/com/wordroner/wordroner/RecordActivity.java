@@ -10,11 +10,15 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wordroner.wordroner.recordManager.MyRecyclerAdapter;
+import com.wordroner.wordroner.recordManager.RecyclerItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +31,9 @@ public class RecordActivity extends AppCompatActivity {
     private final int REQ_CODE_SPEECH_INPUT = 100;
 
     private RecyclerView recyclerView;
+    private ArrayList<String> speechList = new ArrayList<>();
+
+    private ListView listview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,13 +58,29 @@ public class RecordActivity extends AppCompatActivity {
         });
     }
     private void initLayout() {
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+//        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        listview = (ListView)findViewById(R.id.speechlist);
     }
     private void initData(ArrayList<String> result) {
-        List<String> speechList = result;
+        speechList = result;
         Log.d("어레이리스트 initData 확인", "initData: " + result);
-        recyclerView.setAdapter(new MyRecyclerAdapter(speechList));
-        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
+//        recyclerView.setAdapter(new MyRecyclerAdapter(getApplicationContext() , speechList, new CustomItemClickListener() {
+//            @Override
+//            public void onItemClick(View v, int position) {
+//                Log.d("어레이리스트 click data", "clicked position:" + position);
+//            }
+//        }));
+//        recyclerView.setAdapter(new MyRecyclerAdapter(speechList));
+//        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,speechList);
+        listview.setAdapter(adapter);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.d("리스트뷰", "onItemClick: "+ i +" : "+ speechList.get(i) );
+                String[] splitString =
+            }
+        });
     }
     /**
      * Showing google speech input dialog
