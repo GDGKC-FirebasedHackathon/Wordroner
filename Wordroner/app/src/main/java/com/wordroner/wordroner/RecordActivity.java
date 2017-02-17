@@ -34,6 +34,13 @@ public class RecordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_record);
 
         txtSpeechInput = (TextView) findViewById(R.id.txtSpeechInput);
+        txtSpeechInput.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RecordActivity.this, SelectActivity.class);
+                startActivity(intent);
+            }
+        });
         btnSpeak = (ImageButton) findViewById(R.id.btnSpeak);
         initLayout();
         btnSpeak.setOnClickListener(new View.OnClickListener() {
