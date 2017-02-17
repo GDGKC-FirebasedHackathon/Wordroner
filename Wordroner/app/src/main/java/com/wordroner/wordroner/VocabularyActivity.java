@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -87,10 +88,19 @@ public class VocabularyActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        final TextView textView1 = (TextView) findViewById(R.id.textView1);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            Dictionary dic = new Dictionary();
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                String selected_item = (String) adapterView.getItemAtPosition(position);
+                String selected_item = (String)adapterView.getItemAtPosition(position);
+                try {
+                    textView1.setText(dic.ShowDefinitions(selected_item));
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
 
 
             }
