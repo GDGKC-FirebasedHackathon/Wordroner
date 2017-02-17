@@ -19,6 +19,7 @@
     <ListView
         android:layout_below="@id/txtSpeechInput"
         android:layout_width="match_parent"
+        android:layout_centerInParent="true"
         android:layout_height="wrap_content"
         android:id="@+id/speechlist"/>
 
@@ -43,7 +44,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/tap_on_mic"
-            android:textColor="@color/white"
             android:textSize="15dp"
             android:textStyle="normal" />
     </LinearLayout>
