@@ -73,6 +73,8 @@ public class VocabularyActivity extends AppCompatActivity {
         });
 
         new CallbackTask().execute(dictionaryEntries());
+
+
         btn_Back.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View view) {
