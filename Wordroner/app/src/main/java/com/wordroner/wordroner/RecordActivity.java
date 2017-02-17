@@ -17,8 +17,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.wordroner.wordroner.recordManager.MyRecyclerAdapter;
-import com.wordroner.wordroner.recordManager.RecyclerItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
