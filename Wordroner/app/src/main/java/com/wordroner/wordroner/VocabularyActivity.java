@@ -9,7 +9,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -20,22 +19,20 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
 public class VocabularyActivity extends AppCompatActivity {
 
     private ListView listView;
 
     private ArrayAdapter<String> dataAdapter;
-
+    Button btn_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vocabulary);
-        final Button btn_Back = (Button) findViewById(R.id.btn_Back);
         listView = (ListView) findViewById(R.id.listView);
-
+        btn_back = (Button) findViewById(R.id.btn_back);
         String uid = "none";
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -68,8 +65,7 @@ public class VocabularyActivity extends AppCompatActivity {
             }
 
         });
-
-        btn_Back.setOnClickListener(new Button.OnClickListener() {
+        btn_back.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
@@ -77,7 +73,7 @@ public class VocabularyActivity extends AppCompatActivity {
                 finish();
             }
         });
-
+/*
         Dictionary dic = new Dictionary();
 
         try {
@@ -87,13 +83,20 @@ public class VocabularyActivity extends AppCompatActivity {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+*/
 
-        final TextView textView1 = (TextView) findViewById(R.id.textView1);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            Dictionary dic = new Dictionary();
+
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 String selected_item = (String)adapterView.getItemAtPosition(position);
+
+                Intent intent = new Intent(getApplicationContext(), WordDefinition.class);
+                intent.putExtra("text",selected_item);
+                Log.d("하이", "onCreate: " + selected_item + intent.getStringExtra("text"));
+                startActivity(intent);
+                finish();
+               /*
                 try {
                     textView1.setText(dic.ShowDefinitions(selected_item));
                 } catch (InterruptedException e) {
@@ -101,7 +104,7 @@ public class VocabularyActivity extends AppCompatActivity {
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 }
-
+*/
 
             }
         });
