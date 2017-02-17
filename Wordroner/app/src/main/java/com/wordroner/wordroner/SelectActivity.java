@@ -69,7 +69,6 @@ public class SelectActivity extends AppCompatActivity {
         recyclerView.setAdapter(new RecordAdapter(list));
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
 
-
         //  ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,, list);
 
         //    listView.setAdapter(adapter);
@@ -83,8 +82,6 @@ public class SelectActivity extends AppCompatActivity {
 
             });
     */
-
-
         String uid = "none";
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {

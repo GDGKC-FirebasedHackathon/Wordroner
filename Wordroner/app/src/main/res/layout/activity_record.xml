@@ -10,18 +10,21 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
         android:layout_marginBottom="30dp"
-        android:textSize="26dp"
+        android:layout_marginTop="80dp"
         android:text="모르는 문장을 들려주세요"
+        android:textSize="26dp"
         android:textStyle="bold" />
 
     <ListView
-        android:layout_below="@id/txtSpeechInput"
+        android:id="@+id/speechlist"
         android:layout_width="match_parent"
-        android:layout_centerInParent="true"
         android:layout_height="wrap_content"
-        android:id="@+id/speechlist"/>
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/txtSpeechInput"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="26dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"

@@ -23,8 +23,10 @@ import java.util.ArrayList;
 public class VocabularyActivity extends AppCompatActivity {
 
     private ListView listView;
-
+    private DatabaseReference myRef;
     private ArrayAdapter<String> dataAdapter;
+    private String uid = "none";
+    private FirebaseUser user;
     Button btn_back;
 
     @Override
@@ -33,15 +35,15 @@ public class VocabularyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_vocabulary);
         listView = (ListView) findViewById(R.id.listView);
         btn_back = (Button) findViewById(R.id.btn_back);
-        String uid = "none";
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             uid = user.getUid();
         }
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-        DatabaseReference myRef = database.getReference(uid);
+        myRef = database.getReference(uid);
 
         dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, new ArrayList<String>());
 
@@ -65,7 +67,7 @@ public class VocabularyActivity extends AppCompatActivity {
             }
 
         });
-        btn_back.setOnClickListener(new Button.OnClickListener(){
+        btn_back.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
@@ -73,26 +75,16 @@ public class VocabularyActivity extends AppCompatActivity {
                 finish();
             }
         });
-/*
-        Dictionary dic = new Dictionary();
 
-        try {
-            Log.i("Wordroner", dic.ShowDefinitions("ace"));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-*/
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                String selected_item = (String)adapterView.getItemAtPosition(position);
+
+                String selected_item = (String) adapterView.getItemAtPosition(position);
 
                 Intent intent = new Intent(getApplicationContext(), WordDefinition.class);
-                intent.putExtra("text",selected_item);
+                intent.putExtra("text", selected_item);
                 Log.d("하이", "onCreate: " + selected_item + intent.getStringExtra("text"));
                 startActivity(intent);
                 finish();
@@ -109,7 +101,14 @@ public class VocabularyActivity extends AppCompatActivity {
             }
         });
     }
-
+    public void addRef(){
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            uid = user.getUid();
+        }
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        myRef = database.getReference(uid);
+    }
 
 }
 
