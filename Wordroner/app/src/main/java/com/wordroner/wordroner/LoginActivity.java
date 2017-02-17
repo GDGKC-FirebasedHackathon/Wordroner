@@ -121,6 +121,8 @@ public class LoginActivity extends AppCompatActivity implements
         }
     }
 
+
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -130,12 +132,18 @@ public class LoginActivity extends AppCompatActivity implements
             if (result.isSuccess()) {
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuthWithGoogle(account);
-                Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
-                startActivity(intent);
+
+                GoToMenu();
             } else {
                 updateAppUi(null);
             }
         }
+    }
+
+    private void GoToMenu(){
+        //go to Menu Activity
+        Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+        startActivity(intent);
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
@@ -210,7 +218,10 @@ public class LoginActivity extends AppCompatActivity implements
     private void signIn() {
         Intent intent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(intent, REQUEST_SIGN_IN_ID);
+
     }
+
+
 
     private void signOut() {
         mFirebaseAuth.signOut();

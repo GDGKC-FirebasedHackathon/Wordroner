@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -28,14 +30,17 @@ public class RecordActivity extends AppCompatActivity {
                 //add google speech API here
                 //
 
-
-
                 WordMap wordmap = new WordMap(words);
 
+                String uid = "none";
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if (user != null) {
+                    uid = user.getUid();
+                }
 
                 // Write a message to the database
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("message");
+                DatabaseReference myRef = database.getReference(uid);
 
 
                 myRef.child("object").setValue(wordmap.ExtractWords());
