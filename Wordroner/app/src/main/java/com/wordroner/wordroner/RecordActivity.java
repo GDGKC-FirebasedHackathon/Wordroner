@@ -11,6 +11,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 public class RecordActivity extends AppCompatActivity {
 
@@ -24,7 +27,8 @@ public class RecordActivity extends AppCompatActivity {
         btn_record.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View view) {
-                String words[] = {"123","123","a","the","cat","cat","cat","dog","apple","a"}; //this is for test
+                ArrayList<String> words = new ArrayList<String>(
+                        Arrays.asList("123", "123", "a", "the", "cat", "cat", "cat", "dog", "apple", "a", "starbucks")); //this is for test
 
                 //
                 //add google speech API here

@@ -16,14 +16,14 @@ public class WordMap {
     public WordMap() {
     }
 
-    public WordMap(String words[]){
+    public WordMap(ArrayList<String> words){
 		wordMap = new HashMap<String, Integer>();
 		
 		for(int i = 0; i<useless_list.length;i++)
 			useless_map.put(useless_list[i],1);
-		
-		for(int i =0; i<words.length;i++)
-			InsertWords(words[i]);
+
+		for(String word : words)
+			InsertWords(word);
 	}
 
 	
