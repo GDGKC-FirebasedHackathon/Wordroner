@@ -53,7 +53,7 @@ public class Dictionary {
                     if (line.contains("\"definitions\"")) {
                         line = reader.readLine().trim();
 
-                        stringBuilder.append(i + "." + line + "\n");
+                        stringBuilder.append(i + "." + line + "\n\n");
                         i++;
                     }
 
