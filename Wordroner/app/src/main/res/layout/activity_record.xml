@@ -14,6 +14,7 @@
         android:layout_marginTop="100dp"
         android:textColor="@color/white"
         android:textSize="26dp"
+        android:text="clickme"
         android:textStyle="normal" />
 
     <android.support.v7.widget.RecyclerView

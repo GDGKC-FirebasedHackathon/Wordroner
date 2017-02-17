@@ -31,7 +31,10 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.RecordView
     public void onBindViewHolder(RecordViewHolder holder, int position) {
         Map.Entry<String, Integer> item = getItem(position);
         String key = item.getKey();
-        holder.tvTitle.setText(key);
+        Integer value = item.getValue();
+        //(Counts)Word
+        holder.tvTitle.setText("("+value+")"+key);
+
     }
 
     Map.Entry<String, Integer> getItem(int position) {
@@ -46,9 +49,11 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.RecordView
 
         private final TextView tvTitle;
 
+
         public RecordViewHolder(View itemView) {
             super(itemView);
-            tvTitle = ((TextView) itemView.findViewById(R.id.tv_item_record_title));
+            this.tvTitle = ((TextView) itemView.findViewById(R.id.tv_item_record_title));
+
         }
     }
 }
