@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -84,7 +85,18 @@ public class VocabularyActivity extends AppCompatActivity {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                String selected_item = (String)adapterView.getItemAtPosition(position);
+
+                                
+            }
+        });
     }
+
+
 
 }
 
