@@ -10,4 +10,39 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.wordroner.wordroner.SelectActivity">
 
+
+
+
+    <Button
+        android:text="Retry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="41dp"
+        android:layout_marginStart="41dp"
+        android:id="@+id/btn_goBack"
+        android:layout_alignBaseline="@+id/btn_saveWord"
+        android:layout_alignBottom="@+id/btn_saveWord"
+        android:layout_toRightOf="@+id/btn_saveWord"
+        android:layout_toEndOf="@+id/btn_saveWord" />
+
+    <Button
+        android:text="Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="63dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginBottom="17dp"
+        android:id="@+id/btn_saveWord"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/my_recycler_view"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btn_goBack" />
+
 </RelativeLayout>
