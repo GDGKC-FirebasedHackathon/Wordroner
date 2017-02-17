@@ -78,7 +78,6 @@ public class RecordActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.d("리스트뷰", "onItemClick: "+ i +" : "+ speechList.get(i) );
-                String[] splitString =
             }
         });
     }
